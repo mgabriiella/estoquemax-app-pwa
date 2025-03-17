@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstoqueMax - Clientes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Logo e Menu para Mobile -->
+            <div class="header-left">
+                <button id="menu-toggle" class="menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+                <a href="dashboard.html" class="logo">
+                    <img src="../icons/EstoqueMax.png">
+                </a>
+            </div>
+
+            <!-- Links de Navegação - Desktop -->
+            <nav class="desktop-nav">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="vendas.html" class="nav-link">Vendas</a>
+                <a href="clientes.html" class="nav-link active">Clientes</a>
+            </nav>
+
+            <!-- Barra de Pesquisa e Ações -->
+            <div class="header-right">
+                <div class="search-container">
+                    <input type="text" placeholder="Buscar produtos, vendas..." class="search-input">
+                    <button class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </button>
+                </div>
+                <button class="icon-button profile-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                </button>
+                <a href="login.html" class="login-button">ENTRAR</a>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="mobile-nav">
+                <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+                <a href="produtos.html" class="mobile-nav-link">Produtos</a>
+                <a href="vendas.html" class="mobile-nav-link">Vendas</a>
+                <a href="clientes.html" class="mobile-nav-link active">Clientes</a>
+            </div>
+            <div class="mobile-search">
+                <div class="mobile-search-container">
+                    <input type="text" placeholder="Buscar produtos, vendas..." class="mobile-search-input">
+                    <button class="mobile-search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </button>
+                </div>
+                <a href="login.html" class="mobile-login-button">ENTRAR</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="content">
+        <h1>Clientes</h1>
+        <div class="action-bar">
+            <button class="btn-primary" id="btnCadastrarCliente">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5v14"></path>
+                </svg>
+                Cadastrar Cliente
+            </button>
+        </div>
+        
+        <div class="clients-list">
+            <!-- Os clientes serão carregados dinamicamente via JavaScript -->
+            <div class="loading-message">Carregando clientes...</div>
+        </div>
+        
+        <!-- Modal de Cadastro de Cliente -->
+        <div class="modal" id="modalCliente">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Cadastrar Cliente</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nomeCliente">Nome do Cliente</label>
+                        <input type="text" id="nomeCliente" placeholder="Ex: João Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailCliente">Email</label>
+                        <input type="email" id="emailCliente" placeholder="Ex: joao@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefoneCliente">Telefone</label>
+                        <input type="tel" id="telefoneCliente" placeholder="Ex: (11) 98765-4321">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" id="btnCancelarCliente">Cancelar</button>
+                    <button class="btn-primary" id="btnSalvarCliente">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+    <script>
+        // Exibir o nome da loja no header
+        document.addEventListener('DOMContentLoaded', function() {
+            const storeNameElement = document.getElementById('storeName');
+            const storeName = localStorage.getItem('storeName');
+            
+            if (storeNameElement && storeName) {
+                storeNameElement.textContent = `| ${storeName}`;
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+### Listar todos os produtos
+GET http://localhost:3001/api/produtos
+
+### Criar um novo produto
+POST http://localhost:3001/api/produtos
+Content-Type: application/json
+
+{
+  "name": "Produto via REST Client",
+  "price": 149.90,
+  "stock": 20
+}
+
+### Atualizar um produto (substitua ID_PRODUTO pelo ID real)
+PUT http://localhost:3001/api/produtos/ID_PRODUTO
+Content-Type: application/json
+
+{
+  "name": "Produto Atualizado",
+  "price": 159.90,
+  "stock": 25
+}
+
+### Excluir um produto (substitua ID_PRODUTO pelo ID real)
+DELETE http://localhost:3001/api/produtos/ID_PRODUTO
+
+### Listar todos os clientes
+GET http://localhost:3001/api/clientes
+
+### Criar um novo cliente
+POST http://localhost:3001/api/clientes
+Content-Type: application/json
+
+{
+  "name": "Cliente Teste",
+  "email": "cliente@teste.com",
+  "phone": "(11) 98765-4321"
+}
+
+### Listar todas as vendas
+GET http://localhost:3001/api/vendas
+
+### Criar uma nova venda
+POST http://localhost:3001/api/vendas
+Content-Type: application/json
+
+{
+  "clientId": "ID_DO_CLIENTE",
+  "items": [
+    {
+      "productId": "ID_DO_PRODUTO",
+      "quantity": 2,
+      "price": 99.90
+    }
+  ]
+}
+
+### Obter dados do dashboard
+GET http://localhost:3001/api/dashboard

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstoqueMax - Onboarding</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Racing+Sans+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="onboarding-container">
+        <div class="onboarding-content">
+            <div class="logo-wrapper">
+                <img src="../icons/logo.png" alt="EstoqueMax Logo" class="logo-image">
+            </div>
+            <!-- Progress indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+            </div>
+            
+            <!-- Passo 1 -->
+            <div id="step1" class="card step active">
+                <h2 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 22px;">Bem-vindo!</h2>
+                <p class="welcome-text">Vamos configurar seu sistema de controle de estoque em poucos passos simples.</p>
+                
+                <form id="storeForm" class="form">
+                    <div class="form-group">
+                        <label for="storeName">Nome da sua loja ou empresa</label>
+                        <input type="text" id="storeName" placeholder="Ex: Minha Loja" required>
+                        <span id="storeNameError" class="error-message">Por favor, preencha esse campo</span>
+                    </div>
+                    <button type="button" id="nextStep" class="btn-primary">
+                        <span>Continuar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Passo 2 -->
+            <div id="step2" class="card step" style="display: none;">
+                <h2 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 22px;">Quase lá!</h2>
+                <p class="welcome-text">Conte-nos um pouco mais sobre você para personalizar sua experiência.</p>
+                
+                <form id="userForm" class="form">
+                    <div class="form-group">
+                        <label for="userName">Seu nome</label>
+                        <input type="text" id="userName" placeholder="Ex: João Silva" required>
+                        <span id="userNameError" class="error-message">Por favor, preencha esse campo</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Seu e-mail</label>
+                        <input type="email" id="userEmail" placeholder="Ex: joao@empresa.com" required>
+                        <span id="userEmailError" class="error-message">Por favor, insira um e-mail válido</span>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span>Começar a usar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+            
+            <footer>
+                <p>© 2025 EstoqueMax. Todos os direitos reservados.</p>
+            </footer>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+    <script>
+        // Controle do botão "Continuar" do primeiro passo
+        const storeNameInput = document.getElementById("storeName");
+        const nextStepButton = document.getElementById("nextStep");
+        const storeNameError = document.getElementById("storeNameError");
+        
+        storeNameInput.addEventListener("input", function() {
+            if (this.value.trim() !== "") {
+                storeNameError.style.display = "none";
+            }
+        });
+
+        // Passar para o próximo passo ao clicar em "Continuar"
+        nextStepButton.addEventListener("click", function() {
+            const storeName = storeNameInput.value.trim();
+            
+            if (storeName === "") {
+                storeNameError.style.display = "block";
+                storeNameInput.focus();
+                return;
+            }
+            
+            document.getElementById("step1").style.display = "none"; 
+            document.getElementById("step2").style.display = "block"; 
+        });
+    
+        // Controle do botão "Começar a usar" do segundo passo
+        const userNameInput = document.getElementById("userName");
+        const userForm = document.getElementById("userForm");
+        const userNameError = document.getElementById("userNameError");
+        
+        userNameInput.addEventListener("input", function() {
+            if (this.value.trim() !== "") {
+                userNameError.style.display = "none";
+            }
+        });
+
+        // Redirecionar para a dashboard ao enviar o segundo formulário
+        userForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const userName = userNameInput.value.trim();
+            
+            if (userName === "") {
+                userNameError.style.display = "block";
+                userNameInput.focus();
+                return;
+            }
+            
+            // Armazenar temporariamente no localStorage para uso na sessão
+            localStorage.setItem("storeName", storeNameInput.value.trim());
+            localStorage.setItem("userName", userName);
+            
+            window.location.href = "dashboard.html";
+        });
+    </script>
+</body>
+</html>

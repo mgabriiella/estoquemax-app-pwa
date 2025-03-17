@@ -77,7 +77,7 @@ Este é um **Progressive Web App (PWA)** desenvolvido para gerenciamento de esto
 ---
 
 ## 🌎 Demonstração Online
-- **Frontend:** [Link do Netlify](estoquemax-app.netlify.app)
+- **Frontend:** [Link do Netlify]([estoquemax-app.netlify.app](https://estoquemax-app.netlify.app/))
 ---
 
 ## 📌 Melhorias Futuras

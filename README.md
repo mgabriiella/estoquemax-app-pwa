@@ -81,11 +81,12 @@ Este é um **Progressive Web App (PWA)** desenvolvido para gerenciamento de esto
 ---
 
 ## 📌 Melhorias Futuras
-✅ Persistência de dados via API externa
-✅ Integração com banco de dados NoSQL (MongoDB)
-✅ Melhorias no design responsivo
-✅ Implementação de autenticação JWT para segurança
-✅ Implementação de notificações push para alertas de estoque
+- Persistência de dados via API externa
+- Integração com banco de dados NoSQL (MongoDB)
+- Melhorias no design responsivo
+- Implementação de autenticação JWT para segurança
+- Implementação de notificações push para alertas de estoque
+- Implementar servidor online (deploy Render)
 
 ---
 
